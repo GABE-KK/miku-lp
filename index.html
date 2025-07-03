@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>みくのベビーケアサービス｜もう、ひとりで頑張らなくていい。</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=M+PLUS+Rounded+1c:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #FBF7F2; 
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23EFEAE4' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            color: #5D4037; 
+        }
+        .font-display-rounded {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+        }
+
+        /* Color palette */
+        .bg-main { background-color: #FBF7F2; }
+        .bg-light-cream { background-color: #FDF6EC; }
+        .bg-accent { background-color: #D4A3A3; } /* Dusty Rose */
+        .text-accent { color: #D4A3A3; }
+        .text-dark { color: #5D4037; }
+        .border-accent { border-color: #D4A3A3; }
+        .hover\:bg-accent-dark:hover { background-color: #c89393; }
+        
+        .reveal { visibility: hidden; }
+        
+        /* Hand-drawn underline/circle effect */
+        .title-effect {
+            position: relative;
+            display: inline-block;
+            padding: 0 10px;
+        }
+        .title-effect::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120%;
+            height: 120%;
+            border: 3px solid #D4A3A3;
+            border-radius: 55% 45% 50% 50% / 50% 55% 45% 50%;
+            transform: translate(-50%, -50%) rotate(-3deg);
+            opacity: 0.4;
+        }
+
+        /* Floating CTA Button */
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
+            transition: transform 0.3s ease-in-out;
+            animation: pulse 2.5s infinite;
+            background-color: #D4A3A3; 
+            color: #FFFFFF;
+        }
+        .floating-cta:hover {
+            transform: scale(1.05);
+            animation-play-state: paused;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 163, 163, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(212, 163, 163, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 163, 163, 0); }
+        }
+
+        /* Simple card style */
+        .simple-card {
+            background-color: white;
+            border: 1px solid #EFEAE4;
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        /* Accordion styles for FAQ */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-main text-dark">
+
+    <nav class="bg-main/80 backdrop-blur-sm sticky top-0 z-40">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="font-display-rounded font-bold text-lg">みくのベビーケア</div>
+            <div class="hidden md:flex items-center space-x-8 text-sm">
+                <a href="#concept" class="hover:text-accent transition-colors">想い</a>
+                <a href="#features" class="hover:text-accent transition-colors">3つの違い</a>
+                <a href="#column" class="hover:text-accent transition-colors">お役立ちコラム</a>
+                <a href="#testimonials" class="hover:text-accent transition-colors">お客様の声</a>
+                <a href="#faq" class="hover:text-accent transition-colors">よくある質問</a>
+                <a href="https://lin.ee/W2jFw7i" target="_blank" rel="noopener noreferrer" class="bg-accent text-white px-4 py-2 rounded-full hover:bg-accent-dark transition-colors">初回体験を予約</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative min-h-[calc(100vh-64px)] flex items-center p-6 overflow-hidden">
+        <div class="container mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-16">
+            <div class="md:w-1/2 text-center md:text-left z-10 order-2 md:order-1">
+                <h1 class="font-display-rounded text-4xl md:text-5xl font-bold leading-tight mb-4 reveal">
+                    その涙、笑顔に変わる。<br>赤ちゃんとママの、最初の味方。
+                </h1>
+                <p class="text-lg md:text-xl mb-8 reveal">
+                    「なんで私だけうまくいかないの…？」<br>
+                    出口のないトンネルで、自分を責めてしまうあなたへ。<br>
+                    育児書にはない、"わが子だけ"の答え、一緒に見つけませんか？
+                </p>
+                <a href="https://lin.ee/W2jFw7i" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all transform hover:scale-105 text-lg reveal">
+                    <span>【毎月5名様限定】初回体験を予約する</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </a>
+            </div>
+            <div class="md:w-1/2 relative h-80 md:h-auto reveal order-1 md:order-2">
+                <img src="images/main-image.jpg" alt="穏やかな赤ちゃんと微笑むママ" class="rounded-2xl shadow-xl w-full h-full object-cover">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="self-check" class="py-16 md:py-24 bg-light-cream">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-dark mb-4 reveal font-display-rounded">
+                    もしかして…<br class="md:hidden">ひとりで抱え込んでいませんか？
+                </h2>
+                <p class="mb-8 reveal">3つ以上当てはまったら、それは頑張りすぎのサインかもしれません。</p>
+                <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg space-y-4 text-left reveal">
+                    <label class="flex items-center p-4 rounded-lg hover:bg-light-cream/50 transition-colors cursor-pointer">
+                        <input type="checkbox" class="h-6 w-6 rounded border-gray-300 text-accent focus:ring-accent">
+                        <span class="ml-4">何をしても泣き止まず、途方に暮れることがある</span>
+                    </label>
+                    <label class="flex items-center p-4 rounded-lg hover:bg-light-cream/50 transition-colors cursor-pointer">
+                        <input type="checkbox" class="h-6 w-6 rounded border-gray-300 text-accent focus:ring-accent">
+                        <span class="ml-4">抱っこすると反り返ったり、嫌がったりするように感じる</span>
+                    </label>
+                    <label class="flex items-center p-4 rounded-lg hover:bg-light-cream/50 transition-colors cursor-pointer">
+                        <input type="checkbox" class="h-6 w-6 rounded border-gray-300 text-accent focus:ring-accent">
+                        <span class="ml-4">寝つきが悪く、寝てもすぐに起きてしまい心身ともに限界</span>
+                    </label>
+                    <label class="flex items-center p-4 rounded-lg hover:bg-light-cream/50 transition-colors cursor-pointer">
+                        <input type="checkbox" class="h-6 w-6 rounded border-gray-300 text-accent focus:ring-accent">
+                        <span class="ml-4">他の子と比べてしまい、発達に不安を感じる</span>
+                    </label>
+                    <label class="flex items-center p-4 rounded-lg hover:bg-light-cream/50 transition-colors cursor-pointer">
+                        <input type="checkbox" class="h-6 w-6 rounded border-gray-300 text-accent focus:ring-accent">
+                        <span class="ml-4">誰かに相談したいけど、「考えすぎ」と思われそうで怖い</span>
+                    </label>
+                </div>
+                <div class="mt-8 reveal">
+                    <p class="mb-4">そのお悩み、決してあなたのせいではありません。</p>
+                    <a href="https://lin.ee/W2jFw7i" target="_blank" rel="noopener noreferrer" class="inline-block bg-accent hover:bg-accent-dark text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all transform hover:scale-105">
+                        専門家に相談して、解決のヒントを見てみる
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="concept" class="py-16 md:py-32 bg-main relative overflow-hidden">
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4 reveal font-display-rounded">
+                    <span class="title-effect">想いがカタチに見えるまで</span>
+                </h2>
+                <p class="text-sm text-dark/60 tracking-widest mb-16 reveal">THOUGHT UNTIL YOU SEE THE FORM</p>
+                <!-- UPDATED: Increased container height to accommodate larger images -->
+                <div class="relative max-w-5xl mx-auto h-[700px] md:h-[650px]">
+                    <div class="absolute inset-x-0 top-0 h-full bg-light-cream/60 rounded-[50%_50%_40%_60%/60%_40%_60%_40%] opacity-80 blur-md"></div>
+                    <!-- UPDATED: Increased central image size -->
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 md:w-72 md:h-72 reveal z-20">
+                        <img src="images/miku4.jpg" alt="代表みくのプロフィール写真" class="rounded-full shadow-lg w-full h-full object-cover">
+                    </div>
+                    <!-- UPDATED: Increased surrounding image sizes and adjusted positions -->
+                    <div class="absolute top-[8%] left-[12%] w-24 h-24 md:w-32 md:h-32 reveal z-20"><img src="images/baby4.jpg" alt="ケアの様子" class="rounded-full shadow-md w-full h-full object-cover"></div>
+                    <div class="absolute bottom-[8%] left-[22%] w-20 h-20 md:w-28 md:h-28 reveal z-20"><img src="images/miku1.jpg" alt="遊びの様子" class="rounded-full shadow-md w-full h-full object-cover"></div>
+                    <div class="absolute top-[15%] right-[10%] w-28 h-28 md:w-36 md:h-36 reveal z-20"><img src="images/miku2.jpg" alt="笑顔の赤ちゃん" class="rounded-full shadow-md w-full h-full object-cover"></div>
+                    <div class="absolute bottom-[12%] right-[15%] w-24 h-24 md:w-32 md:h-32 reveal z-20"><img src="images/miku.manmaru.jpg" alt="サポート" class="rounded-full shadow-md w-full h-full object-cover"></div>
+                    
+                    <div class="absolute top-1/2 -translate-y-1/2 right-0 md:right-[-2%] lg:right-[-10%] w-56 md:w-72 bg-white/60 backdrop-blur-sm p-5 md:p-6 rounded-2xl shadow-lg reveal z-30">
+                        <h3 class="text-lg md:text-xl font-bold text-dark mb-3 font-display-rounded">ママのせいじゃない。</h3>
+                        <p class="text-xs md:text-sm text-left leading-relaxed text-dark">赤ちゃんが泣くのには理由があります。理学療法士の視点でそのサインを読み解き、「どうして？」を「なるほど！」に変えるお手伝いをします。私自身、出口の見えない育児に悩んだからこそ、今度は私があなたの光になりたい。そんな想いで、一人ひとりに寄り添います。</p>
+                    </div>
+                </div>
+                <div class="mt-12 reveal">
+                    <a href="#testimonials" class="text-dark hover:text-accent font-bold transition-colors">同じように悩んでいたママたちの声を見る →</a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="features" class="py-16 md:py-24 bg-light-cream relative overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-12 reveal font-display-rounded">
+                    <span class="title-effect">みくのケア 3つの違い</span>
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8 text-left">
+                    <div class="simple-card reveal">
+                        <h3 class="text-xl font-bold text-dark mb-2 font-display-rounded">1.【専門性】理学療法士の”見立て”</h3>
+                        <p>関節の動き、筋肉の緊張、呼吸のパターンなど、身体のプロだからこそ分かる細かなサインを見逃しません。なぜその姿勢を好むのか、なぜ反り返るのか、その子の個性を科学的な視点で評価し、具体的なケアを提案します。</p>
+                    </div>
+                    <div class="simple-card reveal">
+                        <h3 class="text-xl font-bold text-dark mb-2 font-display-rounded">2.【全体性】トータルサポート</h3>
+                        <p>ケアの手技だけでなく、赤ちゃんの寝床の環境、心地よいおもちゃの選び方、日中の過ごし方までトータルでアドバイス。「点」ではなく「線」で、赤ちゃんの健やかな発達とママの穏やかな毎日を支えます。</p>
+                    </div>
+                    <div class="simple-card reveal">
+                        <h3 class="text-xl font-bold text-dark mb-2 font-display-rounded">3.【寄り添い】ママの心を最優先に</h3>
+                        <p>「こうあるべき」という理想を押し付けることはありません。まずはママが安心できること。どんな小さな不安も、誰にも言えなかった悩みも、ジャッジせずに受け止める安全な場所を提供します。</p>
+                    </div>
+                </div>
+                <div class="text-center mt-12 reveal">
+                    <a href="#flow" class="text-dark hover:text-accent font-bold transition-colors">具体的なサービスの流れを見てみる →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="flow" class="py-16 md:py-24 bg-main">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-12 reveal font-display-rounded">
+                    <span class="title-effect">サービスの流れ</span>
+                </h2>
+                <div class="max-w-3xl mx-auto relative">
+                    <div class="absolute left-4 top-4 bottom-4 w-0.5 bg-accent/30 border-l-2 border-dashed border-accent/50"></div>
+                    <div class="space-y-12">
+                        <div class="relative pl-12 reveal">
+                            <div class="absolute left-0 top-0 w-8 h-8 bg-accent text-white rounded-full flex items-center justify-center font-bold">1</div>
+                            <h3 class="text-xl font-bold font-display-rounded mb-2">公式LINEからご予約</h3>
+                            <p>まずはページ下部のボタンから公式LINEにご登録ください。「体験希望」とメッセージを送るだけで簡単にお申し込みいただけます。ご希望の日時をいくつかお聞かせください。</p>
+                        </div>
+                        <div class="relative pl-12 reveal">
+                            <div class="absolute left-0 top-0 w-8 h-8 bg-accent text-white rounded-full flex items-center justify-center font-bold">2</div>
+                            <h3 class="text-xl font-bold font-display-rounded mb-2">事前カウンセリング</h3>
+                            <p>LINEにて簡単なカウンセリングシートをお送りします。今のお悩みや赤ちゃんの様子など、分かる範囲でご記入ください。事前に状況を把握することで、当日よりスムーズで的確なケアをご提供できます。</p>
+                        </div>
+                        <div class="relative pl-12 reveal">
+                            <div class="absolute left-0 top-0 w-8 h-8 bg-accent text-white rounded-full flex items-center justify-center font-bold">3</div>
+                            <h3 class="text-xl font-bold font-display-rounded mb-2">ベビーケア当日</h3>
+                            <p>ご自宅、または指定のサロンにてケアを行います。リラックスした雰囲気の中、赤ちゃんの身体を丁寧にチェックし、一人ひとりに合ったケアを実践。ママにも具体的な関わり方をレクチャーします。</p>
+                        </div>
+                        <div class="relative pl-12 reveal">
+                            <div class="absolute left-0 top-0 w-8 h-8 bg-accent text-white rounded-full flex items-center justify-center font-bold">4</div>
+                            <h3 class="text-xl font-bold font-display-rounded mb-2">アフターフォロー</h3>
+                            <p>ケア後1週間、LINEでの質問がし放題です。「これで合ってるかな？」と不安になった時も、すぐにご相談いただけます。ケアをして終わりではなく、ママが自信を持って育児に取り組めるまで伴走します。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="column" class="py-16 md:py-24 bg-light-cream">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-12 reveal font-display-rounded">
+                    <span class="title-effect">ママと赤ちゃんのヒント箱</span>
+                </h2>
+                <p class="text-center max-w-2xl mx-auto mb-12 reveal">理学療法士の視点から、お家でできる簡単なケアや、育児がちょっと楽になるコツをお届けします。</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="simple-card reveal">
+                        <h3 class="font-bold font-display-rounded mb-2">背中スイッチはなぜ起こる？原因と3つの対策</h3>
+                        <p class="text-sm text-dark/70 mb-4">多くのママを悩ませる「背中スイッチ」。その意外な原因と、今日から試せる簡単な対策をご紹介します。</p>
+                        <a href="./column-back-switch.html" class="text-accent font-bold text-sm">続きを読む...</a>
+                    </div>
+                    <div class="simple-card reveal">
+                        <h3 class="font-bold font-display-rounded mb-2">寝返りを促す、魔法の遊び方</h3>
+                        <p class="text-sm text-dark/70 mb-4">焦らなくて大丈夫。赤ちゃんの「やりたい！」気持ちを引き出す、楽しい遊びのアイデアをお伝えします。</p>
+                        <a href="#" class="text-accent font-bold text-sm">続きを読む...</a>
+                    </div>
+                     <div class="simple-card reveal">
+                        <h3 class="font-bold font-display-rounded mb-2">ママの心が軽くなる、完璧じゃない育児のススメ</h3>
+                        <p class="text-sm text-dark/70 mb-4">100点満点のママじゃなくていい。自分を大切にする時間を作るための、具体的なヒントをお届けします。</p>
+                        <a href="#" class="text-accent font-bold text-sm">続きを読む...</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="py-16 md:py-24 bg-main">
+             <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-12 reveal font-display-rounded">
+                    <span class="title-effect">喜びの声が届いています</span>
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- UPDATED: Image paths and layout for screenshots -->
+                    <div class="simple-card reveal text-center">
+                        <img src="images/お客様の声3.jpg" class="w-full rounded-lg shadow-md mb-6" alt="お客様のアンケート1">
+                        <p class="text-right font-bold text-dark/60">- 〇ヶ月ベビーのママ</p>
+                    </div>
+                    <div class="simple-card reveal text-center">
+                        <img src="images/お客様の声5.jpg" class="w-full rounded-lg shadow-md mb-6" alt="お客様のアンケート2">
+                        <p class="text-right font-bold text-dark/60">- 〇ヶ月ベビーのママ</p>
+                    </div>
+                    <div class="simple-card reveal text-center">
+                        <img src="images/お客様の声9.jpg" class="w-full rounded-lg shadow-md mb-6" alt="お客様のアンケート3">
+                        <p class="text-right font-bold text-dark/60">- 〇ヶ月ベビーのママ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="py-16 md:py-24 bg-light-cream">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-12 reveal font-display-rounded">
+                    <span class="title-effect">よくあるご質問</span>
+                </h2>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <div class="simple-card reveal">
+                        <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                            <span class="font-bold font-display-rounded text-lg">何ヶ月から利用できますか？</span>
+                            <svg class="w-6 h-6 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content pt-0">
+                            <p class="mt-4 text-dark/80">生後1ヶ月の赤ちゃんからご相談いただけます。特に、首すわり前や寝返り前の低月齢の時期に身体の土台を整えておくことは、その後の健やかな発達にとって非常に重要です。月齢に関わらず、気になることがあればいつでもご相談ください。</p>
+                        </div>
+                    </div>
+                    <div class="simple-card reveal">
+                        <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                            <span class="font-bold font-display-rounded text-lg">オンラインでも相談できますか？</span>
+                            <svg class="w-6 h-6 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content pt-0">
+                            <p class="mt-4 text-dark/80">はい、可能です。遠方にお住まいの方や、外出が難しい方のためにオンラインでのカウンセリングやセルフケア指導も行っております。画面越しでも赤ちゃんの様子を詳しく拝見し、今できることを丁寧にお伝えします。お気軽にお問い合わせください。</p>
+                        </div>
+                    </div>
+                    <div class="simple-card reveal">
+                        <button class="accordion-toggle flex justify-between items-center w-full text-left">
+                            <span class="font-bold font-display-rounded text-lg">持ち物は何が必要ですか？</span>
+                            <svg class="w-6 h-6 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content pt-0">
+                            <p class="mt-4 text-dark/80">普段お使いのオムツ、おしりふき、着替え、授乳に必要なもの（ミルク、哺乳瓶など）、そして大きめのバスタオルを1枚お持ちください。赤ちゃんがお気に入りのおもちゃがあれば、ぜひ一緒にお持ちください。リラックスできる環境でケアを行いましょう。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" class="py-16 md:py-24 bg-main text-dark relative">
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <p class="font-display-rounded text-accent reveal">もう、ひとりで悩まないで</p>
+                <h2 class="text-3xl font-bold mb-4 reveal font-display-rounded">暗いトンネルの先に、光は必ずあります</h2>
+                <p class="text-lg mb-8 reveal max-w-2xl mx-auto">赤ちゃんの個性を知れば、育児はもっと楽しく、もっと楽になる。<br>その感動的な変化を、次はあなたが体験する番です。</p>
+                <div class="bg-white/70 backdrop-blur-sm max-w-2xl mx-auto p-8 rounded-3xl shadow-xl reveal border-4 border-accent/50">
+                    <p class="font-bold text-dark">【毎月5名様限定】</p>
+                    <h3 class="text-2xl md:text-3xl font-bold my-2 font-display-rounded text-accent">初回ベビーケア体験セッション</h3>
+                    <div class="text-left my-6 bg-light-cream/30 p-4 rounded-2xl border border-dark/10">
+                        <p class="font-bold mb-2 text-dark">【セッション内容】</p>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>理学療法士による赤ちゃんの身体チェック</li>
+                            <li>個性に合わせたベビーケア実践</li>
+                            <li>抱っこや関わり方のアドバイス</li>
+                            <li>ママの心に寄り添うカウンセリング</li>
+                        </ul>
+                    </div>
+                    <div class="text-left my-6 bg-accent/10 p-4 rounded-2xl border border-accent/30">
+                        <p class="font-bold mb-2 text-accent text-center">＼さらに！LINE登録者さま限定特典／</p>
+                        <p class="text-center font-bold">「夜泣きがピタッとおさまる寝かしつけ動画」<br>もれなくプレゼント！</p>
+                    </div>
+                    <p class="text-xl">通常価格 6,000円<span class="text-sm">（税込）</span></p>
+                    <div class="text-2xl font-bold my-2">▼ ▼ ▼</div>
+                    <p class="text-lg">初回体験特別価格</p>
+                    <p class="text-5xl md:text-6xl font-bold text-accent my-2">3,500<span class="text-2xl">円</span></p>
+                    <p class="text-sm">（税込）</p>
+                    <a href="https://lin.ee/W2jFw7i" target="_blank" rel="noopener noreferrer" class="mt-8 inline-block bg-accent hover:bg-accent-dark text-white font-bold py-4 px-10 rounded-full shadow-lg transition-all transform hover:scale-105 text-lg w-full font-display-rounded">
+                        【限定特典付き】3,500円で赤ちゃんと私の未来を変える
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white/70 text-center p-6">
+        <div class="container mx-auto">
+            <div class="font-display-rounded font-bold text-lg mb-2">みくのベビーケア</div>
+            <p class="text-sm">&copy; 2024 Miku's Baby Care. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://lin.ee/W2jFw7i" target="_blank" rel="noopener noreferrer" class="floating-cta text-white rounded-full p-3 shadow-lg flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+        <span class="ml-2 mr-1 font-bold hidden sm:block">LINEで相談</span>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.set(".reveal", {autoAlpha: 0, y: 30});
+            gsap.utils.toArray('.reveal').forEach(element => {
+                gsap.to(element, {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 1.2,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none',
+                    }
+                });
+            });
+
+            const accordions = document.querySelectorAll('.accordion-toggle');
+            accordions.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        content.style.paddingTop = null;
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        content.style.paddingTop = '1rem';
+                        icon.style.transform = 'rotate(180deg)';
+                    } 
+                });
+            });
+        });
+    </script>
+</body>
+</html>
