@@ -179,34 +179,26 @@
                 </h2>
                 <p class="text-sm text-dark/60 tracking-widest mb-16 reveal">THOUGHT UNTIL YOU SEE THE FORM</p>
                 
-                <!-- Mobile Layout: Simple vertical stack -->
-                <div class="md:hidden flex flex-col items-center gap-8">
-                    <div class="w-full max-w-sm bg-white/60 backdrop-blur-sm p-6 rounded-2xl shadow-lg reveal">
-                        <h3 class="text-lg font-bold text-dark mb-3 font-display-rounded">ママのせいじゃない。</h3>
-                        <p class="text-sm text-left leading-relaxed text-dark">赤ちゃんが泣くのには理由があります。理学療法士の視点でそのサインを読み解き、「どうして？」を「なるほど！」に変えるお手伝いをします。私自身、出口の見えない育児に悩んだからこそ、今度は私があなたの光になりたい。そんな想いで、一人ひとりに寄り添います。</p>
-                    </div>
-                    <img src="images/miku4.jpg" alt="代表みくのプロフィール写真" class="w-48 h-48 rounded-full shadow-lg object-cover reveal">
-                    <div class="grid grid-cols-2 gap-4 w-full max-w-sm">
-                        <img src="images/baby4.jpg" alt="ケアの様子" class="rounded-full shadow-md w-full aspect-square object-cover reveal">
-                        <img src="images/miku1.jpg" alt="遊びの様子" class="rounded-full shadow-md w-full aspect-square object-cover reveal">
-                        <img src="images/miku2.jpg" alt="笑顔の赤ちゃん" class="rounded-full shadow-md w-full aspect-square object-cover reveal">
-                        <img src="images/miku.manmaru.jpg" alt="サポート" class="rounded-full shadow-md w-full aspect-square object-cover reveal">
-                    </div>
-                </div>
-
-                <!-- Desktop Layout: Original absolute positioning -->
-                <div class="hidden md:block relative max-w-5xl mx-auto h-[650px]">
-                    <div class="absolute inset-x-0 top-0 h-full bg-light-cream/60 rounded-[50%_50%_40%_60%/60%_40%_60%_40%] opacity-80 blur-md"></div>
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 reveal z-20">
+                <!-- This layout works for both mobile and desktop -->
+                <div class="relative max-w-lg md:max-w-5xl mx-auto h-[900px] md:h-[650px]">
+                    <!-- Background Blob -->
+                    <div class="absolute inset-0 md:inset-x-0 md:top-0 md:h-full bg-light-cream/60 rounded-[50%_50%_40%_60%/60%_40%_60%_40%] opacity-80 blur-md"></div>
+                    
+                    <!-- Miku's Profile Image -->
+                    <div class="absolute top-[240px] left-1/2 -translate-x-1/2 w-40 h-40 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-72 md:h-72 reveal z-20">
                         <img src="images/miku4.jpg" alt="代表みくのプロフィール写真" class="rounded-full shadow-lg w-full h-full object-cover">
                     </div>
-                    <div class="absolute top-[8%] left-[12%] w-32 h-32 reveal z-20"><img src="images/baby4.jpg" alt="ケアの様子" class="rounded-full shadow-md w-full h-full object-cover"></div>
-                    <div class="absolute bottom-[8%] left-[22%] w-28 h-28 reveal z-20"><img src="images/miku1.jpg" alt="遊びの様子" class="rounded-full shadow-md w-full h-full object-cover"></div>
-                    <div class="absolute top-[15%] right-[10%] w-36 h-36 reveal z-20"><img src="images/miku2.jpg" alt="笑顔の赤ちゃん" class="rounded-full shadow-md w-full h-full object-cover"></div>
-                    <div class="absolute bottom-[12%] right-[15%] w-32 h-32 reveal z-20"><img src="images/miku.manmaru.jpg" alt="サポート" class="rounded-full shadow-md w-full h-full object-cover"></div>
-                    <div class="absolute top-1/2 -translate-y-1/2 right-0 lg:right-[-10%] w-72 bg-white/60 backdrop-blur-sm p-6 rounded-2xl shadow-lg reveal z-30">
-                        <h3 class="text-xl font-bold text-dark mb-3 font-display-rounded">ママのせいじゃない。</h3>
-                        <p class="text-sm text-left leading-relaxed text-dark">赤ちゃんが泣くのには理由があります。理学療法士の視点でそのサインを読み解き、「どうして？」を「なるほど！」に変えるお手伝いをします。私自身、出口の見えない育児に悩んだからこそ、今度は私があなたの光になりたい。そんな想いで、一人ひとりに寄り添います。</p>
+
+                    <!-- Surrounding Images -->
+                    <div class="absolute top-8 left-4 w-28 h-28 md:top-[8%] md:left-[12%] md:w-32 md:h-32 reveal z-20"><img src="images/baby4.jpg" alt="ケアの様子" class="rounded-full shadow-md w-full h-full object-cover"></div>
+                    <div class="absolute top-8 right-4 w-28 h-28 md:top-[15%] md:right-[10%] md:w-36 md:h-36 reveal z-20"><img src="images/miku2.jpg" alt="笑顔の赤ちゃん" class="rounded-full shadow-md w-full h-full object-cover"></div>
+                    <div class="absolute bottom-[280px] left-4 w-28 h-28 md:bottom-[8%] md:left-[22%] md:w-28 md:h-28 reveal z-20"><img src="images/miku1.jpg" alt="遊びの様子" class="rounded-full shadow-md w-full h-full object-cover"></div>
+                    <div class="absolute bottom-[280px] right-4 w-28 h-28 md:bottom-[12%] md:right-[15%] md:w-32 md:h-32 reveal z-20"><img src="images/miku.manmaru.jpg" alt="サポート" class="rounded-full shadow-md w-full h-full object-cover"></div>
+                    
+                    <!-- Text Box -->
+                    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-xs p-5 md:p-6 md:top-1/2 md:-translate-y-1/2 md:right-0 md:left-auto md:translate-x-0 lg:right-[-10%] md:w-72 bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg reveal z-30">
+                        <h3 class="text-lg md:text-xl font-bold text-dark mb-3 font-display-rounded">ママのせいじゃない。</h3>
+                        <p class="text-xs md:text-sm text-left leading-relaxed text-dark">赤ちゃんが泣くのには理由があります。理学療法士の視点でそのサインを読み解き、「どうして？」を「なるほど！」に変えるお手伝いをします。私自身、出口の見えない育児に悩んだからこそ、今度は私があなたの光になりたい。そんな想いで、一人ひとりに寄り添います。</p>
                     </div>
                 </div>
 
@@ -289,12 +281,12 @@
                     <div class="simple-card reveal">
                         <h3 class="font-bold font-display-rounded mb-2">寝返りを促す、魔法の遊び方</h3>
                         <p class="text-sm text-dark/70 mb-4">焦らなくて大丈夫。赤ちゃんの「やりたい！」気持ちを引き出す、楽しい遊びのアイデアをお伝えします。</p>
-                        <a href="#" class="text-accent font-bold text-sm">続きを読む...</a>
+                        <a href="./column-negaeri.html" class="text-accent font-bold text-sm">続きを読む...</a>
                     </div>
                      <div class="simple-card reveal">
                         <h3 class="font-bold font-display-rounded mb-2">ママの心が軽くなる、完璧じゃない育児のススメ</h3>
                         <p class="text-sm text-dark/70 mb-4">100点満点のママじゃなくていい。自分を大切にする時間を作るための、具体的なヒントをお届けします。</p>
-                        <a href="#" class="text-accent font-bold text-sm">続きを読む...</a>
+                        <a href="./column-kokorokaruku.html" class="text-accent font-bold text-sm">続きを読む...</a>
                     </div>
                 </div>
             </div>
